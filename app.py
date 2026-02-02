@@ -9,23 +9,13 @@ st.set_page_config(page_title="SafeCheck", page_icon="🛡️", layout="centered
 st.markdown("""
     <style>
     #MainMenu, footer, header, [data-testid="stHeader"] {visibility: hidden; display:none;}
-    
-    .stApp {
-        background-color: #0E1117;
-        color: #FFFFFF;
-    }
-
+    .stApp { background-color: #0E1117; color: #FFFFFF; }
     .stTextArea textarea { 
         border-radius: 15px; 
         border: 2px solid #30363D; 
         background-color: #161B22 !important;
         color: white !important;
         font-size: 16px;
-    }
-
-    /* Style for the HTML container to prevent it from being blocked */
-    .element-container iframe {
-        border-radius: 18px;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -36,18 +26,17 @@ timestamp = now.strftime("%I:%M %p")
 
 # 4. App Content
 st.title("🛡️ SafeCheck")
-
 DEFAULT_MSG = f"I am okay, safe, and all is good in life! ❤️\n(Sent at {timestamp})"
 custom_message = st.text_area("Final Message Preview:", value=DEFAULT_MSG, height=140)
 encoded_msg = urllib.parse.quote(custom_message)
 
 st.write("### Choose your app:")
 
-# 5. The Grid (Using target="_top" to ensure links break out of the frame)
+# 5. The Grid (Broken into safe, short lines)
 html_lines = [
     '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-family: sans-serif;">',
     
-    # WhatsApp - target="_top" is the secret to making these work on mobile
+    # WhatsApp
     f'<a href="whatsapp://send?text={encoded_msg}" target="_top" style="text-decoration:none;">',
     '<div style="background-color:#25D366; color:white; height:75px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; gap:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">',
     '<img src="https://img.icons8.com/material-outlined/48/ffffff/whatsapp.png" width="28" height="28"/>WhatsApp</div></a>',
@@ -60,11 +49,4 @@ html_lines = [
     # Viber
     f'<a href="viber://forward?text={encoded_msg}" target="_top" style="text-decoration:none;">',
     '<div style="background-color:#7360F2; color:white; height:75px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; gap:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">',
-    '<img src="https://img.icons8.com/ios-filled/50/ffffff/viber.png" width="24" height="24"/>Viber</div></a>',
-
-    # Messenger
-    '<div onclick="shareNative()" style="background-color:#0084FF; color:white; height:75px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; gap:10px; cursor:pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">',
-    '<img src="https://img.icons8.com/material-sharp/48/ffffff/facebook-messenger.png" width="26" height="26"/>Messenger</div>',
-    
-    # Other Apps
-    f'<div onclick="shareNative()" style="grid-column: span 2; background-color:#30363D; color:white; height:75px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:
+    '<img src="https://img.icons8.com/ios-filled/50/ffffff/viber.png" width="24
