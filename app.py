@@ -40,20 +40,20 @@ st.write("### Send via:")
 col1, col2 = st.columns(2)
 
 with col1:
-    # WhatsApp - Pre-fills text & recipient
+    # WhatsApp
     wa_url = f"https://wa.me/{PHONE_NUMBER}?text={encoded_msg}"
     st.link_button("🟢 WhatsApp", wa_url, use_container_width=True)
 
-    # Viber - Uses 'forward' to reliably pre-fill text
+    # Viber
     viber_url = f"viber://forward?text={encoded_msg}"
     st.link_button("💜 Viber", viber_url, use_container_width=True)
 
 with col2:
-    # iMessage / SMS - Pre-fills text & recipient
+    # iMessage / SMS
     sms_url = f"sms:{PHONE_NUMBER}&body={encoded_msg}"
     st.link_button("🔵 iMessage/SMS", sms_url, use_container_width=True)
 
-    # Messenger - Opens chat window only
+    # Messenger
     fb_url = f"https://m.me/{FB_USERNAME}"
     st.link_button("🟦 Messenger", fb_url, use_container_width=True)
 
@@ -61,10 +61,9 @@ with col2:
 st.divider()
 st.info("💡 **Tip for Messenger:** Facebook doesn't allow auto-filling text. Click the button below to copy your message before opening Messenger.")
 
-# FIXED LINE BELOW:
+# THE LINE BELOW IS FIXED
 if st.button("📋 Copy Message for Messenger", use_container_width=True):
     st.code(custom_message, language=None)
     st.success("Text shown above! Long-press to copy, then tap Messenger.")
 
 st.caption(f"Configured Recipient: {PHONE_NUMBER}")
-if st.button("📋 Copy Message for Messenger", use_container_width=True
