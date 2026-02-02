@@ -33,3 +33,6 @@ To make the buttons work, update the following in `app.py`:
 - **WhatsApp/SMS:** Fully pre-fills the message.
 - **Viber:** Opens the chat (behavior varies by device).
 - **Messenger:** Opens the direct chat, but you must paste the message (Facebook's privacy limit).
+
+---
+*© 2024 Dawid Krynicki - All Rights Reserved*
