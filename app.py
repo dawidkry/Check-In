@@ -15,21 +15,15 @@ st.markdown("""
         padding: 10px;
         font-size: 16px;
     }
-    .stTitle {
-        font-size: 2.2rem !important;
-        padding-bottom: 0px !important;
-    }
     </style>
     """, unsafe_allow_html=True)
 
 # 3. Time Handling
-# This adds a "Sent at: 21:45" style note to your message
 now = datetime.now()
 timestamp = now.strftime("%I:%M %p")
 
 # 4. App Content
 st.title("🛡️ SafeCheck")
-st.write("One tap to let them know you're okay.")
 
 DEFAULT_MSG = f"I am okay, safe, and all is good in life! ❤️\n(Sent at {timestamp})"
 custom_message = st.text_area("Final Message Preview:", value=DEFAULT_MSG, height=140)
@@ -37,20 +31,22 @@ encoded_msg = urllib.parse.quote(custom_message)
 
 st.write("### Choose your app:")
 
-# 5. The Professional Icon Grid
-grid_html = f"""
+# 5. The Professional Icon Grid (Fixed Syntax)
+# We use a standard string and .format() to avoid f-string curly bracket errors
+grid_template = """
 <div style="
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 ">
-    <a href="whatsapp://send?text={encoded_msg}" style="text-decoration:none;">
+    <a href="whatsapp://send?text={msg}" style="text-decoration:none;">
         <div style="background-color:#25D366; color:white; height:75px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; gap:10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
             <img src="https://img.icons8.com/material-outlined/48/ffffff/whatsapp.png" width="28" height="28"/>
             WhatsApp
         </div>
     </a>
 
-    <a href="sms:&body={encoded_msg}" style="text-decoration:none;">
-        <div style="background-color:#34C759; color:white; height:75px; border-radius:
+    <a href="sms:&body={msg}" style="text-decoration:none;">
+        <div style="background-color:#34C759; color:white; height:75px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; gap:10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/speech-bubble.png"
